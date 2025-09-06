@@ -4,7 +4,7 @@ import 'normalize.css';
 import StyledComponentsRegistry from '../lib/StyledComponentsRegistry';
 import GlobalStyle from '../lib/GlobalStyle';
 
-const notoSansTC = Noto_Sans_TC({
+export const notoSansTC = Noto_Sans_TC({
   subsets: ['latin'],
 });
 

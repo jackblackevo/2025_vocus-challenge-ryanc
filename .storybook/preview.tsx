@@ -1,6 +1,17 @@
 import type { Preview } from '@storybook/nextjs-vite';
+import 'normalize.css';
+import { notoSansTC } from '../app/layout';
+import GlobalStyle from '../lib/GlobalStyle';
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <div className={notoSansTC.className}>
+        <GlobalStyle />
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {
