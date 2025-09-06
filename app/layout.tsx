@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import 'normalize.css';
 import StyledComponentsRegistry from '../lib/StyledComponentsRegistry';
+import GlobalStyle from '../lib/GlobalStyle';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <GlobalStyle />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
