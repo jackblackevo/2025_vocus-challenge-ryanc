@@ -17,4 +17,5 @@ export const getArticles = ({
 }) =>
   fetch(
     `${API_ENDPOINT}/api/articles?userId=${authorId}&page=${page}&num=${num}`,
+    { cache: 'no-store' },
   ).then<ArticlesResponse>((res) => res.json());
