@@ -12,7 +12,8 @@ const getRandomFourArticles = cache(async () => {
     num: 1,
   });
 
-  const pageCount = Math.floor(articleCount / 4);
+  const pageCount = Math.ceil(articleCount / 4);
+  const lastPageRemainingSlots = articleCount % 4;
   const pageNum = Math.ceil(Math.random() * pageCount);
 
   const { articles } = await getArticles({
@@ -20,6 +21,16 @@ const getRandomFourArticles = cache(async () => {
     page: pageNum,
     num: 4,
   });
+
+  if (pageNum === pageCount && lastPageRemainingSlots > 0) {
+    const response = await getArticles({
+      authorId: AUTHOR_ID,
+      page: 1,
+      num: lastPageRemainingSlots,
+    });
+
+    return [...articles, ...response.articles];
+  }
 
   return articles;
 });
